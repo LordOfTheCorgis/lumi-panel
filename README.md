@@ -11,6 +11,24 @@ Pterodactyl® is a free, open-source game server management panel built with PHP
 in mind, Pterodactyl runs all game servers in isolated Docker containers while exposing a beautiful and intuitive
 UI to end users.
 
+## Lumi Panel Update (04/05/2026)
+
+Lumi Panel is now live in production.
+
+### New Features
+
+* Full redesign of all pages
+	* Refreshed server layout
+	* Power buttons on the server list
+	* Search bar on the server list
+	* Sort servers by name and status
+* Replaced the file editor with Monaco Editor
+* Added a "Select All" option in the subuser menu when assigning permissions
+* FiveM servers now include a txAdmin button for quick and easy panel access
+* Minecraft servers now include a built-in mod loader with support for Modrinth and CurseForge
+
+If you run into bugs, please open an issue or contact the maintainer directly.
+
 Stop settling for less. Make game servers a first class citizen on your platform.
 
 ![Image](https://cdn.pterodactyl.io/site-assets/pterodactyl_v1_demo.gif)
