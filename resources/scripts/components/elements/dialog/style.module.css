@@ -1,0 +1,45 @@
+.container {
+    @apply flex min-h-full items-center justify-center p-4 text-center;
+}
+
+.panel {
+    @apply relative max-w-xl w-full mx-auto text-left;
+    background-color: #1e1e1e;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+    @apply font-header text-xl font-medium mb-2 pr-4;
+    color: #f0f0f0;
+}
+
+.close_icon {
+    @apply w-5 h-5 group-hover:rotate-90 transition-transform duration-100;
+}
+
+.dialog_icon {
+    @apply flex items-center justify-center w-10 h-10 mr-4;
+    border-radius: 3px;
+
+    &.danger {
+        background-color: rgba(255, 76, 76, 0.15);
+        color: #FF4C4C;
+    }
+
+    &.warning {
+        background-color: rgba(230, 162, 60, 0.15);
+        color: #e6a23c;
+    }
+
+    &.success {
+        background-color: rgba(138, 191, 101, 0.15);
+        color: #8abf65;
+    }
+
+    &.info {
+        background-color: rgba(255, 76, 76, 0.15);
+        color: #FF4C4C;
+    }
+}

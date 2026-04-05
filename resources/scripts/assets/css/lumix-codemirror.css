@@ -1,0 +1,216 @@
+/* Lumix Dark Theme for CodeMirror */
+.cm-s-lumix.CodeMirror {
+    background: #0f1117;
+    color: #e6edf3;
+}
+
+.cm-s-lumix div.CodeMirror-selected {
+    background: rgba(255, 76, 76, 0.12);
+}
+
+.cm-s-lumix .CodeMirror-line::selection,
+.cm-s-lumix .CodeMirror-line > span::selection,
+.cm-s-lumix .CodeMirror-line > span > span::selection {
+    background: rgba(255, 76, 76, 0.15);
+}
+
+.cm-s-lumix .CodeMirror-line::-moz-selection,
+.cm-s-lumix .CodeMirror-line > span::-moz-selection,
+.cm-s-lumix .CodeMirror-line > span > span::-moz-selection {
+    background: rgba(255, 76, 76, 0.15);
+}
+
+.cm-s-lumix .CodeMirror-gutters {
+    background: #0b0d13;
+    border-right: 1px solid #1e2030;
+}
+
+.cm-s-lumix .CodeMirror-guttermarker {
+    color: #FF4C4C;
+}
+
+.cm-s-lumix .CodeMirror-guttermarker-subtle {
+    color: #3a3f55;
+}
+
+.cm-s-lumix .CodeMirror-linenumber {
+    color: #3a3f55;
+}
+
+.cm-s-lumix .CodeMirror-cursor {
+    border-left: 2px solid #FF4C4C;
+}
+
+.cm-s-lumix span.cm-comment {
+    color: #5c6370;
+    font-style: italic;
+}
+
+.cm-s-lumix span.cm-atom {
+    color: #d19a66;
+}
+
+.cm-s-lumix span.cm-number {
+    color: #d19a66;
+}
+
+.cm-s-lumix span.cm-property {
+    color: #e6edf3;
+}
+
+.cm-s-lumix span.cm-attribute {
+    color: #c792ea;
+}
+
+.cm-s-lumix span.cm-keyword {
+    color: #c792ea;
+}
+
+.cm-s-lumix span.cm-builtin {
+    color: #82aaff;
+}
+
+.cm-s-lumix span.cm-string {
+    color: #98c379;
+}
+
+.cm-s-lumix span.cm-string-2 {
+    color: #98c379;
+}
+
+.cm-s-lumix span.cm-variable {
+    color: #e6edf3;
+}
+
+.cm-s-lumix span.cm-variable-2 {
+    color: #82aaff;
+}
+
+.cm-s-lumix span.cm-variable-3,
+.cm-s-lumix span.cm-type {
+    color: #ffcb6b;
+}
+
+.cm-s-lumix span.cm-def {
+    color: #82aaff;
+}
+
+.cm-s-lumix span.cm-bracket {
+    color: #89ddff;
+}
+
+.cm-s-lumix span.cm-tag {
+    color: #FF4C4C;
+}
+
+.cm-s-lumix span.cm-header {
+    color: #FF4C4C;
+}
+
+.cm-s-lumix span.cm-link {
+    color: #c792ea;
+}
+
+.cm-s-lumix span.cm-error {
+    color: #FF4C4C;
+    text-decoration: underline;
+}
+
+.cm-s-lumix .CodeMirror-activeline-background {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.cm-s-lumix .CodeMirror-matchingbracket {
+    color: #fff !important;
+    background: rgba(255, 76, 76, 0.25);
+    border-bottom: 1px solid #FF4C4C;
+}
+
+.cm-s-lumix .CodeMirror-nonmatchingbracket {
+    color: #FF4C4C !important;
+}
+
+/* Fold gutter */
+.cm-s-lumix .CodeMirror-foldmarker {
+    color: #c792ea;
+    text-shadow: none;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+.cm-s-lumix .CodeMirror-foldgutter-open,
+.cm-s-lumix .CodeMirror-foldgutter-folded {
+    color: #3a3f55;
+}
+
+.cm-s-lumix .CodeMirror-foldgutter-open:hover,
+.cm-s-lumix .CodeMirror-foldgutter-folded:hover {
+    color: #737373;
+}
+
+/* Scrollbars */
+.cm-s-lumix .CodeMirror-simplescroll-horizontal div,
+.cm-s-lumix .CodeMirror-simplescroll-vertical div {
+    background: #2a2a2a;
+    border-radius: 2px;
+}
+
+/* Search dialog */
+.cm-s-lumix .CodeMirror-dialog {
+    background: #1a1a1a;
+    border-bottom: 1px solid #222222;
+    color: #a3a3a3;
+    padding: 0.375rem 0.75rem;
+}
+
+.cm-s-lumix .CodeMirror-dialog input {
+    background: #111111;
+    border: 1px solid #333333;
+    color: #f0f0f0;
+    border-radius: 3px;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Matching highlight */
+.cm-s-lumix .cm-matchhighlight {
+    background: rgba(255, 76, 76, 0.1);
+}
+
+/* Hint menu */
+.cm-s-lumix .CodeMirror-hints {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.cm-s-lumix .CodeMirror-hint {
+    color: #e6edf3;
+}
+
+.cm-s-lumix li.CodeMirror-hint-active {
+    background: rgba(255, 76, 76, 0.15);
+    color: #f0f0f0;
+}
+
+/* Trailing spaces */
+.cm-s-lumix .cm-trailingspace {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QUXCToH00Y1UgAAACFJREFUCNdjPMDBUc/AwNDAAAFMTAwMDA0OP34wQgX/AQBYgwYEx4f9lQAAAABJRU5ErkJggg==);
+    background-position: bottom left;
+    background-repeat: repeat-x;
+}
+
+span.cm-operator {
+    /* Override for operator in lumix theme context */
+}
+
+.cm-s-lumix span.cm-operator {
+    color: #89ddff;
+}
+
+.cm-s-lumix span.cm-meta {
+    color: #ffcb6b;
+}
+
+.cm-s-lumix span.cm-qualifier {
+    color: #c792ea;
+}

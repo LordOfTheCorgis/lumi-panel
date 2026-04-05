@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --lumix-red: #FF4C4C;
+        --lumix-red-hover: #e63e3e;
+        --lumix-red-active: #cc3333;
+        --lumix-bg-primary: #111111;
+        --lumix-bg-secondary: #1a1a1a;
+        --lumix-bg-tertiary: #222222;
+        --lumix-bg-elevated: #2a2a2a;
+        --lumix-border: #333333;
+        --lumix-border-hover: #444444;
+        --lumix-text-primary: #f0f0f0;
+        --lumix-text-secondary: #a3a3a3;
+        --lumix-text-muted: #737373;
+    }
+}
+
+@layer components {
+    .lumix-card {
+        @apply bg-neutral-800 border border-neutral-700;
+        border-radius: 3px;
+    }
+
+    .lumix-card-header {
+        @apply px-4 py-3 border-b border-neutral-700;
+        background-color: #1a1a1a;
+    }
+
+    .lumix-input {
+        @apply w-full px-3 py-2 text-sm;
+        background-color: #1a1a1a;
+        border: 1px solid #333333;
+        color: #f0f0f0;
+        border-radius: 2px;
+        transition: border-color 150ms ease;
+    }
+
+    .lumix-input:focus {
+        border-color: var(--lumix-red);
+        outline: none;
+        box-shadow: 0 0 0 1px rgba(255, 76, 76, 0.2);
+    }
+
+    .lumix-btn-primary {
+        background-color: var(--lumix-red);
+        color: #ffffff;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+        font-size: 0.875rem;
+        border-radius: 2px;
+        transition: background-color 100ms ease;
+        cursor: pointer;
+    }
+
+    .lumix-btn-primary:hover:not(:disabled) {
+        background-color: var(--lumix-red-hover);
+    }
+
+    .lumix-btn-primary:active:not(:disabled) {
+        background-color: var(--lumix-red-active);
+    }
+
+    .lumix-btn-secondary {
+        background-color: transparent;
+        color: #d4d4d4;
+        border: 1px solid #3a3a3a;
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+        font-size: 0.875rem;
+        border-radius: 2px;
+        transition: border-color 100ms ease, color 100ms ease;
+        cursor: pointer;
+    }
+
+    .lumix-btn-secondary:hover:not(:disabled) {
+        border-color: #525252;
+        color: #f0f0f0;
+    }
+
+    .lumix-status-operational {
+        @apply text-neutral-300;
+    }
+
+    .lumix-status-warning {
+        color: #e6a23c;
+    }
+
+    .lumix-status-error {
+        color: var(--lumix-red);
+    }
+}
