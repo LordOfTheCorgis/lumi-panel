@@ -1,90 +1,174 @@
-[![Logo Image](https://cdn.pterodactyl.io/logos/new/pterodactyl_logo.png)](https://pterodactyl.io)
+# Lumi Panel
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/pterodactyl/panel/ci.yaml?label=Tests&style=for-the-badge&branch=1.0-develop)
-![Discord](https://img.shields.io/discord/122900397965705216?label=Discord&logo=Discord&logoColor=white&style=for-the-badge)
-![GitHub Releases](https://img.shields.io/github/downloads/pterodactyl/panel/latest/total?style=for-the-badge)
-![GitHub contributors](https://img.shields.io/github/contributors/pterodactyl/panel?style=for-the-badge)
+## 1. Project Overview
 
-# Pterodactyl Panel
+Lumi Panel is the Lumix-hosted game server management panel based on Pterodactyl, with backend services in Laravel and frontend assets built with TypeScript and webpack.
 
-Pterodactyl® is a free, open-source game server management panel built with PHP, React, and Go. Designed with security
-in mind, Pterodactyl runs all game servers in isolated Docker containers while exposing a beautiful and intuitive
-UI to end users.
+## 2. Prerequisites
 
-## Lumi Panel Update (04/05/2026)
+- PHP 8.2 or 8.3
+- Composer 2.x
+- Node.js 22+
+- Yarn 1.x (Classic)
+- MySQL or MariaDB (for local app data)
+- OS: Windows, macOS, or Linux
 
-Lumi Panel is now live in production.
+## 3. Installation
 
-### New Features
+Run these commands from the project root:
 
-* Full redesign of all pages
-	* Refreshed server layout
-	* Power buttons on the server list
-	* Search bar on the server list
-	* Sort servers by name and status
-* Replaced the file editor with Monaco Editor
-* Added a "Select All" option in the subuser menu when assigning permissions
-* FiveM servers now include a txAdmin button for quick and easy panel access
-* Minecraft servers now include a built-in mod loader with support for Modrinth and CurseForge
+```bash
+composer install
+yarn install
+```
 
-If you run into bugs, please open an issue or contact the maintainer directly.
+Set up your app key and database schema:
 
-Stop settling for less. Make game servers a first class citizen on your platform.
+```bash
+php artisan key:generate
+php artisan migrate
+```
 
-![Image](https://cdn.pterodactyl.io/site-assets/pterodactyl_v1_demo.gif)
+## 4. Running the Project (Development)
 
-## Documentation
+Run local build steps, then test on the VM.
 
-* [Panel Documentation](https://pterodactyl.io/panel/1.0/getting_started.html)
-* [Wings Documentation](https://pterodactyl.io/wings/1.0/installing.html)
-* [Community Guides](https://pterodactyl.io/community/about.html)
-* Or, get additional help [via Discord](https://discord.gg/pterodactyl)
+Build assets before upload:
 
-## Sponsors
+```bash
+yarn run build
+```
 
-I would like to extend my sincere thanks to the following sponsors for helping fund Pterodactyl's development.
-[Interested in becoming a sponsor?](https://github.com/sponsors/pterodactyl)
+Prepare backend files before upload:
 
-| Company                                                                           | About                                                                                                                                                                                                                                           |
-|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**Aussie Server Hosts**](https://aussieserverhosts.com/)                         | No frills Australian Owned and operated High Performance Server hosting for some of the most demanding games serving Australia and New Zealand.                                                                                                 |
-| [**BisectHosting**](https://www.bisecthosting.com/)                               | BisectHosting provides Minecraft, Valheim and other server hosting services with the highest reliability and lightning fast support since 2012.                                                                                                 |
-| [**MineStrator**](https://minestrator.com/)                                       | Looking for the most highend French hosting company for your minecraft server? More than 24,000 members on our discord trust us. Give us a try!                                                                                                 |
-| [**HostEZ**](https://hostez.io)                                                   | US & EU Rust & Minecraft Hosting. DDoS Protected bare metal, VPS and colocation with low latency, high uptime and maximum availability. EZ!                                                                                                     |
-| [**Blueprint**](https://blueprint.zip/?utm_source=pterodactyl&utm_medium=sponsor) | Create and install Pterodactyl addons and themes with the growing Blueprint framework - the package-manager for Pterodactyl. Use multiple modifications at once without worrying about conflicts and make use of the large extension ecosystem. |
-| [**indifferent broccoli**](https://indifferentbroccoli.com/)                      | indifferent broccoli is a game server hosting and rental company. With us, you get top-notch computer power for your gaming sessions. We destroy lag, latency, and complexity--letting you focus on the fun stuff.                              |
+```bash
+composer install --no-dev --optimize-autoloader
+```
 
-### Supported Games
+Expected result:
 
-Pterodactyl supports a wide variety of games by utilizing Docker containers to isolate each instance. This gives
-you the power to run game servers without bloating machines with a host of additional dependencies.
+- Project files are ready to upload to the VM
+- VM serves the updated panel after upload
 
-Some of our core supported games include:
+## 5. Building for Production
 
-* Minecraft — including Paper, Sponge, Bungeecord, Waterfall, and more
-* Rust
-* Terraria
-* Teamspeak
-* Mumble
-* Team Fortress 2
-* Counter Strike: Global Offensive
-* Garry's Mod
-* ARK: Survival Evolved
+```bash
+yarn run build:production
+```
 
-In addition to our standard nest of supported games, our community is constantly pushing the limits of this software
-and there are plenty more games available provided by the community. Some of these games include:
+This generates optimized assets in `public/assets`.
 
-* Factorio
-* San Andreas: MP
-* Pocketmine MP
-* Squad
-* Xonotic
-* Starmade
-* Discord ATLBot, and most other Node.js/Python discord bots
-* [and many more...](https://pterodactyleggs.com)
+## 6. Preview or Start Production Build
 
-## License
+This project does not use localhost preview for team workflow.
 
-Pterodactyl® Copyright © 2015 - 2022 Dane Everitt and contributors.
+Deploy and validate on the VM:
 
-Code released under the [MIT License](./LICENSE.md).
+```bash
+# from your local repo after changes
+yarn run build:production
+```
+
+Upload the updated project to the VM and restart required services on the VM.
+
+Use this rule for pushes:
+
+- Push only after the VM works as expected
+- If deployment breaks, re-download a clean copy from GitHub and re-upload to the VM
+
+## 7. Environment Variables
+
+Configure environment variables on the VM.
+
+You need a `.env` file in the VM project directory.
+
+If `.env.example` exists on the VM:
+
+```bash
+cp .env.example .env
+```
+
+If you must edit `.env` from Windows before upload:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Minimum required keys:
+
+```env
+APP_NAME="Lumi Panel"
+APP_ENV=production
+APP_KEY=
+APP_DEBUG=false
+APP_URL=https://your-panel-domain
+
+DB_CONNECTION=mysql
+DB_HOST=your-db-host
+DB_PORT=3306
+DB_DATABASE=your-db-name
+DB_USERNAME=your-db-user
+DB_PASSWORD=your-db-password
+```
+
+Then run:
+
+```bash
+php artisan key:generate
+```
+
+## 8. Project Structure
+
+- `app/`: Laravel application code (controllers, services, models, jobs)
+- `config/`: Framework and application configuration
+- `database/`: Migrations, seeders, and factories
+- `resources/scripts/`: React/TypeScript frontend source
+- `resources/views/`: Blade templates
+- `routes/`: Route definitions
+- `public/`: Public web root and compiled frontend assets
+- `storage/`: Logs, cache, and runtime files
+
+## 9. Common Issues / Troubleshooting
+
+- Missing frontend manifest or asset errors:
+
+```bash
+yarn run build:production
+```
+
+- Dependency issues after branch switch:
+
+```bash
+rm -rf vendor node_modules
+composer install
+yarn install
+```
+
+- Windows PowerShell cleanup alternative:
+
+```powershell
+Remove-Item -Recurse -Force vendor,node_modules
+composer install
+yarn install
+```
+
+- VM deploy fails after upload:
+
+```text
+1. Re-download a clean copy from GitHub.
+2. Apply the same change again.
+3. Rebuild assets.
+4. Re-upload to the VM.
+```
+
+- Push safety rule:
+
+```text
+Only push when the VM deployment is confirmed working.
+```
+
+- Migration errors:
+
+```bash
+php artisan migrate:fresh
+```
