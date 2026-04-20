@@ -146,6 +146,10 @@ Route::group([
         Route::post('/install', [Client\Servers\ModsController::class, 'install']);
     });
 
+    Route::group(['prefix' => '/importer'], function () {
+        Route::post('/sftp', [Client\Servers\SftpImportController::class, 'store']);
+    });
+
     Route::group(['prefix' => '/startup'], function () {
         Route::get('/', [Client\Servers\StartupController::class, 'index']);
         Route::put('/variable', [Client\Servers\StartupController::class, 'update']);
