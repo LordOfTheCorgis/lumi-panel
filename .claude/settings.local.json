@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($items = Get-ChildItem \"C:\\\\Users\\\\evanv\\\\Downloads\\\\\" -Force; \"Count: $\\($items.Count\\)\"; $items | Select-Object -First 10 | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\evanv\\\\Downloads\\\\\" -Force | Where-Object { $_.Name -match 'icon|ico|logo|lumi' } | Select-Object Name, LastWriteTime, Length)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $ico = New-Object System.Drawing.Icon\\(\"C:\\\\Users\\\\evanv\\\\Documents\\\\GitHub\\\\lumi-panel\\\\logo.ico\"\\); $bmp = $ico.ToBitmap\\(\\); \"Source ico size: $\\($bmp.Width\\)x$\\($bmp.Height\\)\"; $bmp.Dispose\\(\\); $ico.Dispose\\(\\))"
+    ]
+  }
+}
