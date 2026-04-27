@@ -8,6 +8,7 @@ import Spinner from '@/components/elements/Spinner';
 import CreateDatabaseButton from '@/components/server/databases/CreateDatabaseButton';
 import Can from '@/components/elements/Can';
 import useFlash from '@/plugins/useFlash';
+import Button from '@/components/elements/Button';
 import tw from 'twin.macro';
 import Fade from '@/components/elements/Fade';
 import ServerContentBlock from '@/components/elements/ServerContentBlock';
@@ -39,6 +40,17 @@ export default () => {
     return (
         <ServerContentBlock title={'Databases'}>
             <FlashMessageRender byKey={'databases'} css={tw`mb-4`} />
+            <div css={tw`flex justify-end mb-4`}>
+                <Button
+                    as={'a'}
+                    href={'https://db.lumixsolutions.org/'}
+                    target={'_blank'}
+                    rel={'noreferrer noopener'}
+                    isSecondary
+                >
+                    Open phpMyAdmin
+                </Button>
+            </div>
             {!databases.length && loading ? (
                 <Spinner size={'large'} centered />
             ) : (
