@@ -142,19 +142,14 @@ export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => 
             animate={'visible'}
         >
             <LogoMark>
-                <motion.svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                <motion.img
+                    src="/login-logo.png"
+                    alt="Logo"
+                    style={{ height: '48px', width: 'auto', maxWidth: '220px', objectFit: 'contain' }}
                     initial={{ rotate: -12, scale: 0.8, opacity: 0 }}
                     animate={{ rotate: 0, scale: 1, opacity: 1 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 18, delay: 0.25 }}
-                >
-                    <rect width="32" height="32" rx="8" fill="#FF4C4C"/>
-                    <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fill="white" fontWeight="700" fontSize="18" fontFamily="IBM Plex Sans, sans-serif">L</text>
-                </motion.svg>
+                />
             </LogoMark>
             {title && (
                 <h2 style={{

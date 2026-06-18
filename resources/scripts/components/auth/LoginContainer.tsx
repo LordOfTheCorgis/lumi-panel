@@ -16,9 +16,20 @@ interface Values {
     password: string;
 }
 
+// Public demo account. These credentials are shipped in the client bundle on
+// purpose: the "Try the Live Demo" button signs anyone into a sandboxed demo
+// account so prospects can explore the panel before buying. Create a matching
+// user in the admin panel and lock it down with subuser permissions on an
+// isolated sandbox server. There is nothing sensitive here by design.
+const DEMO_CREDENTIALS: Values = {
+    username: 'demo',
+    password: 'demo',
+};
+
 const LoginContainer = ({ history }: RouteComponentProps) => {
     const ref = useRef<Reaptcha>(null);
     const [token, setToken] = useState('');
+    const [demoPending, setDemoPending] = useState(false);
 
     const { clearFlashes, clearAndAddHttpError } = useFlash();
     const { enabled: recaptchaEnabled, siteKey } = useStoreState((state) => state.settings.data!.recaptcha);
@@ -73,16 +84,58 @@ const LoginContainer = ({ history }: RouteComponentProps) => {
                 password: string().required('Please enter your account password.'),
             })}
         >
-            {({ isSubmitting, setSubmitting, submitForm }) => (
+            {({ isSubmitting, setValues, submitForm }) => (
                 <LoginFormContainer title={'Login to Continue'}>
                     <Field light type={'text'} label={'Username or Email'} name={'username'} disabled={isSubmitting} />
                     <div css={tw`mt-6`}>
                         <Field light type={'password'} label={'Password'} name={'password'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
-                        <Button type={'submit'} size={'xlarge'} isLoading={isSubmitting} disabled={isSubmitting}>
+                        <Button
+                            type={'submit'}
+                            size={'xlarge'}
+                            isLoading={isSubmitting && !demoPending}
+                            disabled={isSubmitting}
+                            onClick={() => setDemoPending(false)}
+                        >
                             Login
                         </Button>
+                    </div>
+                    <div css={tw`mt-4`}>
+                        <button
+                            type={'button'}
+                            disabled={isSubmitting}
+                            onClick={() => {
+                                setDemoPending(true);
+                                // Reuse the normal login flow (incl. reCAPTCHA) with the demo
+                                // credentials so nothing about the auth path changes.
+                                setValues(DEMO_CREDENTIALS).then(() => submitForm());
+                            }}
+                            style={{
+                                width: '100%',
+                                background: 'transparent',
+                                border: '1px solid rgba(255, 76, 76, 0.4)',
+                                borderRadius: '8px',
+                                padding: '0.625rem 1.25rem',
+                                fontWeight: 600,
+                                fontSize: '0.875rem',
+                                color: '#FF4C4C',
+                                cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                                opacity: isSubmitting ? 0.6 : 1,
+                                transition: 'background 0.15s ease, border-color 0.15s ease',
+                            }}
+                            onMouseEnter={(e) => {
+                                if (isSubmitting) return;
+                                e.currentTarget.style.background = 'rgba(255, 76, 76, 0.1)';
+                                e.currentTarget.style.borderColor = '#FF4C4C';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.background = 'transparent';
+                                e.currentTarget.style.borderColor = 'rgba(255, 76, 76, 0.4)';
+                            }}
+                        >
+                            {isSubmitting && demoPending ? 'Loading demo…' : 'Try the Live Demo'}
+                        </button>
                     </div>
                     {recaptchaEnabled && (
                         <Reaptcha
